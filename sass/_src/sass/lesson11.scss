@@ -1,0 +1,34 @@
+// sassは以下のように入れ子構造（ネスト）にできる
+// メリット
+// ・htmlと同じツリー構造になる
+// ・セレクタを一部変更するだけで対応するもの全てが変んこうされてメンテナンス性に優れている
+
+#main {
+    width: 1000px;
+    margin: 0 auto;
+
+    section {
+        padding: 10px;
+
+        h1 {
+            font-size: 1.4rem;
+        }
+        
+        p {
+            margin-bottom: 20px;
+        }
+
+        p.note {
+            color: #f00;
+        }
+
+        ul {
+            margin-bottom: 20px;
+
+            li {
+                margin-left: 20px;
+            }
+        }
+    }
+}
+

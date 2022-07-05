@@ -1,0 +1,60 @@
+.btn {
+    display: block;
+    border-radius: 5px;
+    width: 80px;
+    height: 40px;
+
+    // 親セレクタの参照
+    &.red {
+        background: #f00;
+    }
+
+    &.green {
+        background: #0f0;
+    }
+}
+
+aside {
+    width: 240px;
+
+    .menu {
+        margin-bottom: 20px;
+    }
+    // asideの親要素にくっつける場合
+    body#top & {
+        width: 300px;
+    }
+}
+
+a {
+    text-decoration: none;
+    // 疑似要素でも親を参照できる
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+// css設計(bem)でも&を使ってネストできる
+.block {
+    width: 500px;
+
+    &__element {
+        margin-bottom: 20px;
+
+        &--modifier {
+            background: #f00;
+        }
+    }
+}
+// &を追加するだけで階層を深くすることができる
+.block {
+    width: 500px;
+
+    & &__element {
+        margin-bottom: 20px;
+
+        &--modifier {
+            background: #f00;
+        }
+    }
+}

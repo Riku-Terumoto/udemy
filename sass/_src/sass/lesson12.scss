@@ -1,0 +1,18 @@
+ul {
+    li {
+        // 隣接セレクタ記法
+        /* 最初のliの次のliにスタイルを適用 */
+        + li {
+            border-bottom: 1px solid #666;
+        }
+        // 関接セレクタ記法
+        /* 2個目以降のliにスタイルを適用 */
+        ~ li {
+            color: #f00;
+        }
+        // 直下セレクタ
+        > div {
+            background: #ccc;
+        }
+    }
+}

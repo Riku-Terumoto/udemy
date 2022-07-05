@@ -1,0 +1,14 @@
+@charset "UTF-8";
+ul li {
+  /* 最初のliの次のliにスタイルを適用 */
+  /* 2個目以降のliにスタイルを適用 */
+}
+ul li + li {
+  border-bottom: 1px solid #666;
+}
+ul li ~ li {
+  color: #f00;
+}
+ul li > div {
+  background: #ccc;
+}

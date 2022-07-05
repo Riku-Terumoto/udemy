@@ -1,0 +1,31 @@
+main {
+    width: 1024px;
+    margin: 0 auto;
+    // メディアクエリのネスト
+    @media screen and (max-width: 768px) {
+        width: 100%;
+        margin: 0;
+
+        @media screen and (max-width: 1024px) {
+            width: 800px;
+        }
+    }
+
+    h1 {
+        font-style: 1.5rem;
+
+        @media screen and (max-width: 768px) {
+            font-size: 1.2rem;
+        }
+    }
+}
+
+#header {
+    height: 100px;
+    border-bottom: 1px solid #999;
+
+    // 印刷物のネスト
+    @media print {
+            display: none;
+    }
+}

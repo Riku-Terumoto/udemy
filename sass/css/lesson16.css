@@ -1,0 +1,40 @@
+.block .element1 {
+  width: 800px;
+}
+.element2 {
+  width: 1000px;
+}
+
+.element3 {
+  width: 1000px;
+}
+
+.element4 {
+  width: 1100px;
+}
+
+@media screen and (max-width: 768px) {
+  .block {
+    width: 100%;
+  }
+  .item {
+    margin-bottom: 30px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .block {
+    width: 100%;
+  }
+}
+.block .item {
+  margin-bottom: 30px;
+}
+.item {
+  margin-bottom: 30px;
+}
+
+@media screen and (max-width: 768px) {
+  .item {
+    margin-bottom: 30px;
+  }
+}

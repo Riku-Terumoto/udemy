@@ -1,0 +1,54 @@
+.block {
+    .element1 {
+        width: 800px;
+    }
+    // at-rootはメディアクエリや親セレクタを除外してroot(一番上)に戻すことができる
+    @at-root .element2 {
+        width: 1000px;
+    }
+    //複数のセレクタに@at-rootを指定したいときは以下のようにする
+    @at-root {
+        .element3 {
+            width: 1000px;
+        }
+    
+        .element4 {
+            width: 1100px;
+        }
+    }
+
+    //メディアクエリの中で@at-rootを使う場合は以下
+    @media screen and (max-width: 768px) {
+        width: 100%;
+
+        @at-root .item {
+            margin-bottom: 30px;
+        }
+    }
+
+    //@at-rootのオプションでwithoutというものがある
+    //これを使うことでメディアクエリの外にかける
+    @media screen and (max-width: 768px) {
+        width: 100%;
+
+        @at-root (without: media) {
+            .item {
+                margin-bottom: 30px;
+            }
+        }
+        //ruleを追加するとメディアクエリの外に出て、
+        //なおかつ親要素を参照しなくなる
+        @at-root (without: media rule) {
+            .item {
+                margin-bottom: 30px;
+            }
+        }
+        //withはwithoutの逆で指定したものが残り
+        //他が除外される
+        @at-root (with: media) {
+            .item {
+                margin-bottom: 30px;
+            }
+        }
+    }
+}

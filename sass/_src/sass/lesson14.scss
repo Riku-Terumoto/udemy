@@ -1,0 +1,29 @@
+div.border-box {
+    // プロパティのネスト
+    border: {
+        top: 2px solid #000;
+
+        bottom: {
+            width: 5px;
+            style: dotted; 
+            color: #f00;
+        }
+
+        radius: 5px;
+    }
+}
+
+// 上左右のborderをスタイルとして当てたい時の2パターン
+div.no-bottom-border1 {
+    border: {
+        top: 1px solid #666;
+        left: 1px solid #666;
+        right: 1px solid #666;
+    }
+}
+
+div.no-bottom-border2 {
+    border: 1px solid #666 {
+        bottom: 0;
+    }
+}

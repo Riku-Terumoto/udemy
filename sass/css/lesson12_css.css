@@ -1,0 +1,14 @@
+/* 最初のliの次のliにスタイルを適用 */
+ul li + li {
+    border-bottom: 1px solid #666;
+}
+
+/* 2個目以降のliにスタイルを適用 */
+ul li ~ li {
+    color: #f00;
+}
+
+/* 直下セレクタ */
+ul li > div {
+    background: #ccc;
+}
