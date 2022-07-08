@@ -1,8 +1,69 @@
-ul {
-    margin: 0 0 20px;
-    list-style: none;
+//別ファイルのsassを読み込む
+//importのあとに相対パスを記述
+// @import "style1.scss";
+// @import "style2.scss";
+//共通のstyle.scssの中にstyle1とstyle2のインポートして、
+//style.cssにまとめて出力されているので、style1とstyle2の
+//cssファイルは不要になる
+//cssファイルを生成させないようにするのが「パーシャル」となる
+//パーシャルファイルにするにはscssのファイル名の最初アンダースコアを入れる
+//_style1.scss
+//パーシャルファイルをインポートするときアンダースコア、拡張子を諸略できる
+// @import "style1";
+// @import "style2";
+//複数のimportはまとめて書くことが可能
+//ただ、まとめて書くとファイルが増えてきた場合に見辛くなるので、ファイル数が多いときは
+//一行づつ記述した方が良いかもしれないとのこと
+@import "style1" , "style2";
+@import "common";
 
-    li {
-        padding: 10px; 
-    }
+//ネストでインポートするとインポート元のセレクタはネスト親の直下になる
+// section p {
+//     margin-bottom: 20px;
+//  }
+  
+// #contents section p {
+//     margin-bottom: 20px;
+// }
+
+#contents {
+    @import "common";
+    @import "local";
 }
+
+
+//パーシャルファイルでネストインポートをするとパーシャルの親セレクタから除外されるのではなく、
+//インポート先の親セレクタから除外される
+//インポートでアンパサンド（$）を使うときは前部分で使う場合は問題ないが、後ろで使うとインポート先の
+//親セレクタまでさんしょうされてしまうので注意が必要
+//_local.scss
+// p {
+//     margin-bottom: 0;
+
+//     @at-root .note {
+//         color: #f00;
+//     }
+
+//     a {
+//         &:hover {
+//             text-decoration: underline;
+//         }
+//     }
+
+//     #contents & {
+//         padding: 10px;
+//     }
+
+// }
+
+/* cssのインポートとsassのインポート */
+//import.css
+/* cssのインポートはブラウザがインポートを解釈して複数のファイルとして読み込む */
+/* sassのインポートはビルド時にインポートしたファイルをまとめて一つのファイルにして出力する */
+/* 結果cssインポートは複数のファイルを読み込むのでロード時間が長くなるのに対してsassインポートは一つのファイルを読み込むのでロード時間を短縮することができる */
+
+
+
+
+
+

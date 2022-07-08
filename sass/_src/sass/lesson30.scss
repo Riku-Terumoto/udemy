@@ -1,0 +1,59 @@
+//継承の基本
+//継承は継承元のセレクタとグループ化され、独自のスタイルは別で出力される
+
+.box1 {
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+.area {
+    @extend .box1;
+    background: #ededed;
+}
+
+//extend専用のセレクタとして作成したい場合やcssに出力したく無い場合もある
+//そのような場合はextend用のセレクタにするプレースホルダーという機能がある
+//extend用のセレクタは%に置き換えるとできる
+
+%box2 {
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+.area {
+    @extend %box2;
+    background: #ededed;
+}
+
+//継承元にできるセレクタの種類
+//・クラスセレクタ .box
+//・タイプセレクタ p
+//・IDセレクタ #box
+//・連結セレクタ .box.red
+//・属性セレクタ input[type="text"]
+//・疑似クラス a:hover
+//・擬似要素 li:first-child
+
+//継承元にできないセレクタ
+//・子孫セレクタ #main section
+//・子セレクタ #main > article
+//・隣接セレクタ h2 > h3
+//・間接セレクタ h2 ~ h3
+
+
+//メディアクエリの継承
+//メディアクエリの外のセレクタをメディアクエリの中から継承することはできないエラーになる
+//メディクエリの中の継承元を外で継承する分にはエラーにはならない
+//ただ、期待通りの出力にならない為、メディアクエリの外、中で継承を分けておかないと意図しないcssが出力されてしまう
+@media only screen and (max-width: 768px) {
+    %box-media {
+        padding: 0;
+    }
+    .item {
+        @extend %box-media;
+    }
+}
+
+.item-media {
+    @extend %box-media;
+}

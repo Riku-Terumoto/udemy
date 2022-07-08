@@ -1,0 +1,24 @@
+//ミックスインにコンテントブロックを渡す
+// Mixin の定義の中で @content を参照すると、呼び出し側から渡されたスタイル定義をそこに展開することができます。 
+@mixin media ($width-media: 768px){
+    @media only screen and (max-width: $width-media) {
+        @content;
+    }
+}
+
+$sp-width: 800px;
+
+.item {
+    .image {
+        float: left;
+        @include media ($sp-width) {
+            float: none;
+        }
+    }
+    .text {
+        margin-left: 20px;
+        @include media ($sp-width) {
+            margin-left: 0;
+        }
+    }
+}

@@ -1,0 +1,23 @@
+.box1, .area {
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+.area {
+  background: #ededed;
+}
+
+.area {
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+.area {
+  background: #ededed;
+}
+
+@media only screen and (max-width: 768px) {
+  .item-media, .item {
+    padding: 0;
+  }
+}

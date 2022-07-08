@@ -1,0 +1,28 @@
+//mixinはスタイルのまとまり（関数みたいなもの）
+//呼び出しはincludeを使う
+//何度でも使うことができる
+//mixinの命名規則は変数と同じ
+//スコープも変数と一緒
+@mixin roundBox {
+    border-radius: 10px;
+    background: #ededed;
+    border: 1px solid #666;
+}
+
+.sidearea {
+    @include roundBox;
+}
+
+.bottomArea {
+    @include roundBox;
+}
+//セレクタ内でmixinを定義したらそのセレクタ内でしか使えない
+.main {
+    @mixin mainBox {
+        margin-bottom: 20px;
+    }
+
+    .contents {
+        @include mainBox;
+    }
+}

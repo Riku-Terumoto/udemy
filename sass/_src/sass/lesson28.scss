@@ -1,0 +1,49 @@
+//可変長引数の扱い方について
+//mininの方で一つの引数しかないのに呼び出しの際に引数二つしているするとエラーになる
+//正しく出力させる方法は三つある
+
+//・丸括弧で囲って一つの引数にする
+@mixin shadow1 ($value) {
+    text-shadow: $value;
+}
+
+.mainText {
+    @include shadow1((8px 8px #666 ,10px -10px 0 #999));
+}
+
+//・クォーテーションで囲って文字列として渡す
+//→そのままだと出力cssにもクォーテーションが入るのでunquote()という関数を使う
+@mixin shadow2 ($value) {
+    text-shadow: $value;
+}
+
+.mainText {
+    @include shadow2(unquote("8px 8px #666 ,10px -10px 0 #999"));
+}
+
+//・可変長引数を使う
+//→mixinの引数後にドットを三つ書く
+@mixin shadow3 ($value...) {
+    text-shadow: $value;
+}
+
+.mainText {
+    @include shadow3(8px 8px #666 ,10px -10px 0 #999);
+}
+
+
+//可変長引数はjsのスプレッド構文に近い
+//mixinの方に複数の引数があって、includeの引数が足りない場合
+//valueには値が二つ入っていて、そのまま引数に渡すと最初の$wに200pxと40pxが入ってしまうが、可変長引数を使うことで二つの値が１番目、２番目に振られて渡されることになる
+@mixin box ($w: 300px, $pd: 20px, $mg: 40px, $clr: #f00) {
+    width: $w;
+    padding: $pd;
+    margin: $mg;
+    color: $clr;
+}
+
+$value: 200px, 40px;
+
+.main {
+    @include box($value...);
+}

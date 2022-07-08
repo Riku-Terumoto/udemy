@@ -1,0 +1,28 @@
+//mixinの引数について
+@mixin paddingBox ($value) {
+    padding: $value;
+    margin-bottom: $value * 2;
+}
+//引数のデフォルト値を決めることができる
+//引数が指定されていなかった場合はデフォルト値を使うことになる
+//引数指定なし、includeで呼び出す際は()をつけても、つけなくてもどっちでも良い
+@mixin marginBox ($value: 30px) {
+    padding: $value;
+    margin-bottom: $value * 2;
+}
+
+.main {
+    .mainBox {
+        @include paddingBox(10px);
+    }
+
+    .normalBox {
+        @include marginBox();
+    }
+
+    .normalBox2 {
+        @include marginBox;
+    }
+}
+
+

@@ -1,0 +1,13 @@
+//変数の使い方
+//使える文字は半角英数字、アンダースコア、ハイフン
+//マルチバイト文字も使える（全角英数、日本語）あんまり使われない
+//それ以外は使えない
+//数字から始まる変数名は使えない
+$pink: #dcafd9;
+
+.border-box {
+    border: 1px solid $pink;
+}
+.color-box {
+    background: 1px solid $pink;
+}

@@ -1,0 +1,23 @@
+//複数の引数の扱い方
+//引数をどちらか一つしか値を指定しない場合は、最初の引数だけ指定するパターンしかできない
+//最初以外の引数だけに値を入れたい場合は変数名と値を記述する必要がある
+@mixin font ($color: #0f0, $size: 8px) {
+    color: $color;
+    font-size: $size;
+}
+
+.main {
+    @include font (#f00, 10px);
+}
+
+.side {
+    @include font;
+}
+
+.first {
+    @include font(#00f);
+}
+
+.second {
+    @include font($size: 20px);
+}
