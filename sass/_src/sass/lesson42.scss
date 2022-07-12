@@ -1,0 +1,65 @@
+//ユーザ定義関数
+//あらかじめ用意された関数では無く、自作した関数
+//mixinと同じように初期値を設定できる
+//mixinはスタイルを出力するのに対して、functionは自作した処理を返す
+@function sum($value1:50px, $value2:50px) {
+    $result: 0;
+    //数値かどうかの判断
+    @if type-of($value1) == number {
+        $result: $value1 + $value2;
+    } @else {
+        //エラーはCLIに出力し、処理を止める
+        // @error "#{$value1}は数値ではありません";
+        // 'Error: "100pxは数値ではありません"\n' +
+        // '   ╷\n' +
+        // '24 │     width: sum("100px", 200px);\n' +
+        // '   │            ^^^^^^^^^^^^^^^^^^^\n' +
+        // '   ╵\n' +
+        // '  _src/sass/lesson42.scss 24:12  root stylesheet',
+
+        
+        //数値でない場合は警告を出す
+        // @warn "#{$value1}は数値ではありません";
+        //cli出力結果
+        // Warning: 100pxは数値ではありません
+        // _src/sass/lesson42.scss 12:9   sum()
+        // _src/sass/lesson42.scss 18:12  root stylesheet
+    }
+    @return $result;
+}
+
+.sum {
+    width: sum(100px, 200px);
+    height: sum();
+}
+
+//配列の中の数値を合計して、最後に平均値を求める関数
+//関数名は被らないようにする
+@function average($arr) {
+    $sum: 0;
+    @each $value in $arr {
+        $sum: $sum + $value;
+        //デバック出力
+        @debug $sum;
+        // 出力結果
+        // _src/sass/lesson42.scss:21 Debug: 1
+        // _src/sass/lesson42.scss:21 Debug: 8
+        // _src/sass/lesson42.scss:21 Debug: 17
+        // _src/sass/lesson42.scss:21 Debug: 40
+    }
+    //小数点を四捨五入して出力
+    @return round($sum / length($arr));
+}
+
+$list: 1, 7, 9, 23;
+
+.age {
+    margin: average($list);
+    //関数名がバッティングしていないかチェックする
+    //tureはしている、falseはしていない
+    test: function-exists(func);
+}
+
+//デバック用ディレクティブ
+//cssに値を出力せず、処理の途中結果や警告、エラーをCLIに出力する
+//ユーザ定義関数の作成するときのデバックや作成した関数の使い方間違っていた時に警告を出すことができる

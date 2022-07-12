@@ -1,0 +1,66 @@
+//条件分岐（if文）
+//sassの条件分岐はそこまで難しく無く、条件に当てはまったらcssのスタイルを出し入れしたりする
+
+@mixin box($type) {
+    @if $type == 0 {
+        border: 1px solid #333;
+    } @else if $type == 1 {
+        border: 2px dotted #f00;
+    } @else {
+        border: none;
+    }
+}
+
+.box0 {
+    @include box(0);
+}
+
+.box1 {
+    @include box(1);
+}
+
+.box2 {
+    @include box(2);
+}
+
+//比較演算子
+$A: 10;
+$B: 20;
+
+.example {
+    @if $A == $B {
+        content: "AとBは同じ";
+
+    } @else if $A > $B {
+        content: "AはBより大きい";
+
+    } @else if $A < $B {
+        content: "AはBより小さい";
+
+    } @else if $A >= $B {
+        content: "AはB以上";
+        
+    } @else if $A <= $B {
+        content: "AはB以下";
+
+    } @else if $A != $B {
+        content: "AとBは等しくない";
+
+    }
+
+}
+
+//論理演算子
+
+.example2 {
+    @if $A > 10 and $A < 20 {
+        content: "and : かつ";// &&は使えない（他言語のかつ）
+
+    } @else if $B == 10 or $B == 20 {
+        content: "or : または";// ||は使えない（他言語のまたは）
+
+    } @else if not ($A == $B ) {
+        content: "not : 否定";
+
+    }
+}

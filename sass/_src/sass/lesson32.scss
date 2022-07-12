@@ -1,0 +1,46 @@
+//ミックスインと継承の使い分け
+
+//ミックスインは今日共通化するスタイルを定義する
+//定義すればどこでも使える
+//ミックスインで定義したスタイルのブロックを必要な部分にcopy&pasteする、または、定型文を出力する
+@mixin box-mixin {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.box1 {
+    @include box-mixin;
+}
+
+.box2 {
+    @include box-mixin;
+}
+
+//継承は引き継ぎ、拡張するという方法でコードを共通化する
+//注意点はただ単にスタイルが共通であるから継承を使うのはよく無い
+//継承はグルーピングするという性質がある
+//例えば.buttonのboderがnews_areaにほしいとして、そのまま継承すると機能的には問題ないが、用途的にbuttonではないのに継承してしまっているということが起きる
+//そういう場合は新しくareaという近しい用途のセレクタを作ってそれを継承するのがコードとして望ましい
+//オブジェクト思考の設計思想にも反するし、継承元が離れた場所にある場合、別ファイルにある場合、継承元を探すのに苦労してしまう
+//また、多重継承になったりの被害が起きる
+
+//sassは出力されたcssをしっかり確認しながら記述していくことが望ましい
+.button {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.errorButton {
+    @extend .button;
+    background-color: #f00;
+}
+
+.area {
+    padding: 10px;
+    border: 1px solid #ccc
+}
+
+.news_area {
+    @extend .area;
+}
+
