@@ -1,0 +1,24 @@
+@charset "UTF-8";
+.quote {
+  content: "テスト";
+}
+
+.unquote {
+  content: テスト;
+}
+
+.abs {
+  width: 100px;
+}
+
+.ceil {
+  width: 34px;
+}
+
+.floor {
+  width: 33px;
+}
+
+.round {
+  width: 33px;
+}

@@ -1,0 +1,15 @@
+.rgba {
+  color: rgba(152, 171, 142, 0.3);
+}
+
+.mix {
+  color: #7c0071;
+}
+
+.lighten {
+  color: #7bdd91;
+}
+
+.darken {
+  color: #081e0d;
+}
