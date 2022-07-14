@@ -1,0 +1,38 @@
+//配列、マップ関数
+//配列やマップの中から特定の値を取り出したり、配列をつなげる処理等を行う
+
+$list1: pen, pineapple;
+$list2:  apple, pen;
+
+.length {
+    //length関数は配列の個数を返す
+    z-index: length($list1);
+}
+
+.nth {
+    //nth関数は指定したn番目の値を返す
+    //１番目の引数に配列、２番目の引数に取り出したい値の番号
+    content: nth($list1, 2);
+}
+
+.join {
+    //join関数は二つの配列を連結する
+    content: join($list1, $list2,);
+}
+
+.appned {
+    //appned関数は第一引数に渡した配列に第二引数で渡した値を追加する
+    content: append($list1, apple);
+}
+
+//map-get関数はmapから引数で渡したキーの値を出力する
+//以下は連想配列
+$map: (    
+    bgcolor: #ededed,
+    fontcolor: #ff0000,
+    bdcolor: #000
+);
+
+.mapget {
+    color: map-get($map, fontcolor);
+}

@@ -1,0 +1,19 @@
+.text-red, .note, .error, .item {
+  color: #f00;
+}
+
+.borderBox, .item {
+  border: 1px solid #666;
+}
+
+.item {
+  padding: 10px;
+}
+
+.note, .error {
+  font-size: 12px;
+}
+
+.error {
+  font-weight: bold;
+}

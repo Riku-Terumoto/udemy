@@ -1,0 +1,32 @@
+//複数継承と継承の連鎖
+//継承しているセレクタをさらに継承すると大元の最後に継承したセレクタは大元のセレクタのスタイルまでも継承される
+//あんまり継承の連鎖させると分かりにくくなる、大元のセレクタに大量にグルーピングされてしまうのでむやみやたらに使わないこと
+.text-red {
+    color: #f00;
+}
+
+.borderBox {
+    border: 1px solid #666;
+}
+
+.item {
+    padding: 10px;
+    @extend .text-red;
+    @extend .borderBox;
+}
+
+.note {
+    @extend .text-red;
+    font-size: 12px;
+}
+
+.error {
+    @extend .note;
+    font-weight: bold;
+}
+
+//継承元になるセレクタが存在しない状態でextendをするとエラーになる
+//!optionalをするとエラーは無くなるがもちろんcssに出力されない
+// .area {
+//     @extend $box !optional;
+// }

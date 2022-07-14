@@ -1,0 +1,20 @@
+@charset "UTF-8";
+.box0 {
+  border: 1px solid #333;
+}
+
+.box1 {
+  border: 2px dotted #f00;
+}
+
+.box2 {
+  border: none;
+}
+
+.example {
+  content: "AはBより小さい";
+}
+
+.example2 {
+  content: "or : または";
+}
